@@ -10,9 +10,24 @@ Sub scrape_quotes_dual()
     Dim extractedData1 As String
     Dim extractedData2 As String
     Dim classElement As Object
+    Dim dataColumn As Range
+    Dim dataCount As Long
+    Dim dataRange As String
+
+
+    
+        
+    ' Set the data column
+    Set dataColumn = Range("A1:A1000") ' Update the column reference as per your requirement
+    
+    ' Count the non-empty cells in the column
+    dataCount = WorksheetFunction.CountA(dataColumn)
+    
+    ' Set the data range 
+    dataRange = "A1:A" & dataCount
     
     ' Define the range of cells containing the URLs
-    Set urlRange = Range("A1:A3") ' Update the range as per your requirement
+    Set urlRange = Range(dataRange) ' Update the range as per your requirement
     
     Set ie = New InternetExplorer
     ie.Visible = True
