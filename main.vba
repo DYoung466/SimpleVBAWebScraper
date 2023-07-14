@@ -7,6 +7,9 @@ Sub scrape_quotes_dual()
     Dim strongElement As Object
     Dim urlRange As Range
     Dim urlCell As Range
+    Dim extractedData1 As String
+    Dim extractedData2 As String
+    Dim classElement As Object
     
     ' Define the range of cells containing the URLs
     Set urlRange = Range("A1:A3") ' Update the range as per your requirement
@@ -27,13 +30,11 @@ Sub scrape_quotes_dual()
         Set classElements = doc.getElementsByClassName("column-half")
         
         ' Extract values from the first and second <strong> tags within the first <p> tag of the first class element
-        Dim extractedData1 As String
-        Dim extractedData2 As String
+
         extractedData1 = ""
         extractedData2 = ""
         
         If Not classElements Is Nothing Then
-            Dim classElement As Object
             Set classElement = classElements.Item(0) ' Retrieve the first element from the collection
             
             ' Retrieve the first <p> tag within the class element
